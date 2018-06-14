@@ -22,8 +22,8 @@
   (Change the port if you are starting with different port.)  
   
   On Swagger Ui, on clicking Data Extractor, you will see two endpoint exposed   
-    _/data_  This endpoint is to send single record. For example put this in the parameter _VF1KMS40A36042123,KB,H1,RENAULT_ and click **Try it out!**  
-    _/data/file_ this endpoint is to upload a csv file.  Click _Choose File_ and upload the file and click **Try it out!**
+    1. _/data_  This endpoint is to send single record. For example put this in the parameter _VF1KMS40A36042123,KB,H1,RENAULT_ and click **Try it out!**  
+    2. _/data/file_ this endpoint is to upload a csv file.  Click _Choose File_ and upload the file and click **Try it out!**
   
   
   In both the cases you should be able to see the result below in **JSON** format.  
