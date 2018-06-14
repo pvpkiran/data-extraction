@@ -8,7 +8,7 @@
   
   **Usage Instructions**  
   
-  If you are running this project from and IDE, then it would be enough to run the main class _DataExtractionApplication.java_  
+  If you are running this project from any IDE, then it would be enough to run the main class _DataExtractionApplication.java_  
   
   If you want to run it from console or command line.   
            1.  compile the code from project's root folder using ``mvn clean package``  

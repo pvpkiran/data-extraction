@@ -24,20 +24,32 @@ public class DataExtractionServiceImpl implements DataExtractionService {
 
   private static final Logger LOGGER = LoggerFactory.getLogger(DataExtractionServiceImpl.class);
 
+  /**
+   * Function to process single line of record. If there are more than one line, it is ignored.
+   * @param record single line representing single record with comma separated values
+   * @return Result object containing vin and make
+   */
   @Override
   public Result processIndividualRecord(final String record) {
     final Result result = new Result();
     LOGGER.debug("Processed a single record at {} with content {}", new Date(), record);
 
-    final String[] split = record.split(",");
+    final String[] lines = record.split("\n");
 
-    if (split.length >= 4) {
+    String[] split = lines[0].split(","); //If there are multiple lines, take first and ignore rest.
+
+    if (split.length >= 4) { // If there are more than 4 columns, ignore rest.
       result.setVin(split[0]);
       result.setMake(split[3]);
     }
     return result;
   }
 
+  /**
+   *
+   * @param file CSV file uploaded by user
+   * @return an object of FileResult type which has a list of vin and make.
+   */
   @Override
   public FileResult processFile(final MultipartFile file) {
 
@@ -66,7 +78,7 @@ public class DataExtractionServiceImpl implements DataExtractionService {
   }
 
   private boolean validLine(final CSVRecord csvRecord) {
-    if(csvRecord.size() < 3) {
+    if(csvRecord.size() < 3) { // Not checking for > 3 because it  will be ignored, if present.
       LOGGER.debug("Line format  {} not correct. Skipping it.", csvRecord);
       return false;
     }
